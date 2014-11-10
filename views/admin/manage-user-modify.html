@@ -1,0 +1,30 @@
+<section class="content-header">
+    <h1>
+        회원관리
+        <small>회원정보수정</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+    <div class="box box-primary">
+        <!-- form start -->
+        <form role="form" ng-submit="updateOwnerByAdmin()">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputMobile">Mobile</label>
+                    <input type="text" class="form-control" id="inputMobile" placeholder="전화번호를 입력하세요." ng-model="updateDataByAdmin.mobile">
+                </div>
+            </div><!-- /.box-body -->
+
+            <div class="box-footer">
+                <button ui-sref="admin.manage-user" class="btn btn-warning">취소</button>
+                <button type="submit" class="btn btn-primary">수정</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</section><!-- /.content -->

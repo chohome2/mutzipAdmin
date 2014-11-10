@@ -1,0 +1,57 @@
+<section class="content-header">
+    <h1>
+        매장기본정보
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="box box-primary">    
+	<div class="box-body">
+	<div class="row">
+        <div class="col-xs-2">
+            <img ng-src="{{shop.image_logo}}" class="img-responsive"/>
+        </div>
+        <div class="col-xs-10">
+            <h2 style="margin-top:0px">{{shop.name_main}}({{shop.name_sub}})</h2>
+            <p>현재 등급 : {{shop.grade}}</p>
+            <p>만료기간 : ~ {{shop.grade_expire}}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>주소</label>
+        <p>{{shop.address}}</p>
+        <p>지역구분 : {{shop.poi}}</p>
+    </div>
+    <div class="form-group">
+        <label>대표전화번호</label>
+        <p>
+			{{shop.phone_repr}}
+		</p>
+    </div>
+	<div class="form-group">
+        <label>추가전화번호</label>
+        <p ng-repeat="phone in shop.phone_etc track by $index">
+			{{phone}}
+		</p>
+    </div>
+    <div class="form-group">
+        <label>영업시간</label>
+        <p>{{shop.work_time}}</p>
+    </div>
+    <div class="form-group">
+        <label>홈페이지</label>
+        <p>{{shop.url}}</p>
+    </div>
+    <!--
+	<div class="form-group">
+        <label>사업자등록증</label>
+        <p></p>
+    </div>-->
+	</div>
+	<div class="box-footer">
+		<button class="btn btn-primary" ui-sref="user.shop-modify({ownerId: shop.owner_id, shopId: shop.shop_id})">정보수정</button>
+	</div>
+</div>
+</section><!-- /.content -->

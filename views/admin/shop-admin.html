@@ -1,0 +1,33 @@
+    <section class="content-header">
+    <h1>
+        매장 관리자변경
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+    <div class="box box-primary">
+        <!-- form start -->
+        <form role="form" ng-submit="updateAdmin()">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail">기존관리자</label>
+                    <p id="exampleInputEmail">{{shop.owner}}</p>
+                </div>
+                <div class="form-group">
+                    <label>변경관리자</label>
+                    <input type="email" class="form-control" placeholder="이메일 주소를 입력하세요. 미입력시 feelitmutzip@gmail.com 매장소유가 됩니다." ng-model="updateAdminEmail">
+                </div>
+            </div><!-- /.box-body -->
+
+            <div class="box-footer">
+                <button ui-sref="user.shop-list" type="submit" class="btn btn-warning">취소</button>
+                <button type="submit" class="btn btn-primary">변경</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</section><!-- /.content -->

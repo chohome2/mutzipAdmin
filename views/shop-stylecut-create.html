@@ -1,0 +1,54 @@
+<section class="content-header">
+    <h1>
+        매장스타일컷 신규 등록
+	<small>{{shopInfo.name_main}}</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<style>
+.sortable.grid {
+overflow: hidden;
+}
+.sortable li {
+list-style: none;
+margin: 5px;
+text-align:center;
+}
+.sortable.grid li {
+float: left;
+width: 200px;
+height: 330px;
+}
+.sortable.grid li .noimage {
+border:1px solid #bbb;
+height:298px;
+color:#bbb;
+}
+.sortable.grid li .confirm {
+border:3px solid #46e;
+}
+</style>
+<section class="content">
+<div style="margin:0 5px 15px 0;">
+<button class="btn btn-primary pull-right" ui-sref="user.shop-stylecut-edit({shopId:shopId})">이미지 순서변경</button>
+<button class="btn btn-danger pull-right" ui-sref="user.shop-stylecut-delete({shopId:shopId})" style="margin:0 3px 0 3px;">이미지 삭제</button>
+<button class="btn btn-default pull-right" ui-sref="user.shop-stylecut({shopId:shopId})">매장 스타일컷</button>
+<div class="clearfix"></div>
+</div>
+<div class="callout callout-danger">
+<h4><i class="fa fa-fw fa-bullhorn"></i> 비어 있는 슬롯 중, 가장 빠른 번호에 등록됩니다.</h4>
+<h4><i class="fa fa-fw fa-bullhorn"></i> 가로 600px, 세로 800px 인 이미지만 등록 가능합니다.</h4>
+<h4><i class="fa fa-fw fa-bullhorn"></i> 확장자가 jpg, png인 파일만 등록 가능합니다.</h4>
+</div>
+<div class="well">
+<div class="row">
+<div class="col-md-10">
+<div class="form-group">
+<input type="file" file-model="myFile" multiple>
+</div>
+</div>
+<div class="col-md-2"> <button class="btn btn-primary btn-block" ng-click="uploadFile()">이미지 등록</button></div>
+</div>
+</div>
+</section><!-- /.content -->

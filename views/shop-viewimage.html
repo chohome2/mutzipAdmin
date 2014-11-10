@@ -1,0 +1,55 @@
+<section class="content-header">
+    <h1>
+        매장이미지관리
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+	<div class="box box-primary">    
+		<div class="box-body">
+			<div class="row">
+				<div class="col-sm-3">
+                    <h4>로고이미지
+                        <a href="" class="alerts" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-title="로고이미지란?" data-content="샘플이미지 보여주기" ><i class="fa fa-fw fa-question-circle"></i></a>
+                    </h4>
+                    <div class="callout callout-danger">
+                        <h4>200px*200px만 등록가능합니다.</h4>
+                    </div>
+                    <img ng-src="{{shop.image_logo}}" class="img-responsive">
+                    <p><br><input type="file" file-model="images.image_logo"><button class="btn btn-primary" ng-click="updateImage('image_logo')">이미지등록</button></p>
+                </div>
+				<div class="col-sm-3">
+					<h4>전경버튼이미지 
+						<a href="" class="alerts" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-title="전경버튼이미지란?" data-content="샘플이미지 보여주기" ><i class="fa fa-fw fa-question-circle"></i></a>
+					</h4>
+					<div class="callout callout-danger">
+						<h4>200px*200px만 등록가능합니다.</h4>
+					</div>
+					<img ng-src="{{shop.image_repr}}" class="img-responsive">
+					<p><br><input type="file" file-model="images.image_repr"><button class="btn btn-primary" ng-click="updateImage('image_repr')">이미지등록</button></p>
+				</div>
+				<div class="col-sm-3">
+					<h4>매장전경이미지
+						<a href="" class="alerts" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-title="매장전경이미지란?" data-content="샘플이미지 보여주기" ><i class="fa fa-fw fa-question-circle"></i></a>
+					</h4>
+					<div class="callout callout-danger">
+						<h4>600px*800px만 등록가능합니다.</h4>
+					</div>
+					<img ng-src="{{shop.image_entire}}" class="img-responsive">
+					<p><br><input type="file" file-model="images.image_entire"><button class="btn btn-primary" ng-click="updateImage('image_entire')">이미지등록</button></p>
+				</div>
+				<div class="col-sm-3">
+					<h4>지도노출이미지
+						<a href="" class="alerts" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-title="지도노출이미지란?" data-content="샘플이미지 보여주기" ><i class="fa fa-fw fa-question-circle"></i></a>
+					</h4>
+					<div class="callout callout-danger">
+						<h4>600px*800px만 등록가능합니다.</h4>
+					</div>
+					<img ng-src="{{shop.image_map}}" class="img-responsive">
+					<p><br><input type="file" file-model="images.image_map"><button class="btn btn-primary" ng-click="updateImage('image_map')">이미지등록</button></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section><!-- /.content -->

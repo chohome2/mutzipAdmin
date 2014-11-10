@@ -1,0 +1,47 @@
+<section class="content-header">
+    <h1>
+        Login
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="margin:65px auto;">
+            <div class="modal-content">
+                <div class="modal-body" style="padding:0">
+                    <div class="form-box" id="login-box">
+                        <form ng-submit="login()">
+                            <div class="header">Sign In</div>
+                            <div class="body bg-gray">
+                                <div class="form-group">
+                                    <input type="text" data-ng-model="username" name="username" class="form-control" placeholder="User ID"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" data-ng-model="password" name="password" class="form-control" placeholder="Password"/>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <button type="submit" class="btn bg-olive btn-block">Sign me in</button>
+
+                            </div>
+                        </form>
+                        <div class="footer">
+                            <p><a ng-click="toggleForgotPassword()">I forgot my password</a></p>
+                            <div data-ng-show="isShowForgotPassword">
+                                <div class="form-group">
+									<label>이메일</label>
+                                    <input type="text" data-ng-model="resetPasswordInfo.email" class="form-control" placeholder="가입한 계정의 이메일 주소를 입력해 주세요."/>
+									<label>모바일번호</label>
+                                    <input type="text" data-ng-model="resetPasswordInfo.mobile" class="form-control" placeholder="가입한 계정의 모바일 번호를 입력해 주세요."/>
+                                </div>
+                                <p>이메일 주소로 초기화 된 비밀번호가 전송됩니다.</p>
+                                <button class="btn btn-block bg-orange" ng-click="resetPassword()">비밀번호 초기화</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</section><!-- /.content -->

@@ -1,0 +1,66 @@
+<section class="content-header">
+    <h1>
+        지역관리
+        <small>전체</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+
+<div class="box-body table-responsive">
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+    <th>지역명</th>
+    <th>등록매장수</th>
+    <th>관리</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="area in areaList">
+    <td>{{area.name}}</td>
+    <td>{{area.size}}</td>
+    <td>
+        <button class="btn btn-default" ng-click="changeName(area)">이름수정</button>
+    </td>
+</tr>
+</tbody>
+</table>
+</div>
+	<form ng-submit="create()">
+    <div class="form-group">
+        <label for="addArea">지역구분 추가</label>
+        <div class="row">
+            <div class="col-xs-8">
+                <input type="text" id="addArea" class="form-control" placeholder="추가할 지역명을 입력하세요" ng-model="createName">
+            </div>
+            <div class="col-xs-3">
+                <button type="submit" class="btn btn-danger">지역구분 추가</button>
+            </div>
+        </div>
+    </div>
+	</form>
+</div>
+
+<div class="modal fade" id="areaModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">지역명 변경</h4>
+      </div>
+      <div class="modal-body">
+      	<input type="text" class="form-control" ng-model="modalArea.name">
+	  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-danger" ng-click="changeArea()">변경</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>
+</section><!-- /.content -->

@@ -1,0 +1,60 @@
+<section class="content-header">
+    <h1>
+        매장스타일컷 순서 변경
+	<small>{{shopInfo.name_main}}</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<style>
+.sortable.grid {
+overflow: hidden;
+}
+.sortable li {
+list-style: none;
+margin: 5px;
+text-align:center;
+}
+.sortable.grid li {
+float: left;
+width: 200px;
+height: 300px;
+padding:5px;
+border:1px solid #bbb;
+}
+.sortable.grid .mainable {
+background:#fffaf0;
+}
+.sortable.grid li .noimage {
+height:298px;
+color:#bbb;
+}
+</style>
+<section class="content">
+<div style="margin:0 5px 15px 0;">
+<button class="btn btn-danger pull-right" ui-sref="user.shop-stylecut-delete({shopId:shopId})">이미지 삭제</button>
+<button class="btn btn-warning pull-right" ui-sref="user.shop-stylecut-create({shopId:shopId})" style="margin:0 3px 0 3px;">이미지 등록</button>
+<button class="btn btn-default pull-right" ui-sref="user.shop-stylecut({shopId:shopId})">매장 스타일컷</button>
+<div class="clearfix"></div>
+</div>
+<div class="callout callout-info">
+<h4><i class="fa fa-fw fa-bullhorn"></i> 마우스로 드래그하여 이미지 순서를 변경하세요.</h4>
+<h4><i class="fa fa-fw fa-bullhorn"></i> 연노랑 배경색은 메인화면에 노출되는 이미지입니다.</h4>
+</div>
+<ul class="sortable grid">
+<li ng-repeat="image in imageList" ng-class="{'mainable': $index < refer.grade.dp_main}">
+	<div ng-hide="image.image_id == ''">
+		<img ng-src="{{image.image_url}}" class="img-responsive" width="200" height="300">
+	</div>
+	<div ng-show="image.image_id == ''" class="noimage">
+		<h1>{{$index + 1}}</h1>
+	</div>
+</li>
+</ul>
+<div class="well">
+<button class="btn btn-warning" ui-sref="user.shop-stylecut({shopId: shopId})">취소</button>
+<button class="btn btn-primary" ng-click="modifyOrder()">이미지 순서 변경</button>
+</div>
+</div>
+
+</section><!-- /.content -->

@@ -1,0 +1,78 @@
+<section class="content-header">
+    <h1>
+        매장리스트
+        <small>전체</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+    <div class="form-group" ng-show="isAdmin">
+        <div class="row">
+            <!--<div class="col-xs-2" style="padding-right:0">
+                <select class="form-control">
+                    <option>매장명</option>
+                    <option>관리자</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+            </div>
+            <div class="col-xs-1" style="padding-left:0">
+                <a href="#"><button class="btn btn-danger">검색</button></a>
+            </div>-->
+			<div class="col-xs-7">&nbsp;</div>
+            <div class="col-xs-5" style="text-align: right">
+                <button class="btn btn-danger" ui-sref="admin.shop-create">+매장추가등록</button>
+            </div>
+        </div>
+		<!--
+        <div style="margin-top:10px;">
+                <input type="checkbox"/>
+                유료 노출이 아닌 매장만 보기&nbsp;&nbsp;
+                <input type="checkbox"/>
+                유효기간이 2주 이하로 남은 매장만 보기&nbsp;&nbsp;
+                <input type="checkbox"/>
+                검수대상 매장보기
+        </div>
+		-->
+    </div>
+<div class="box-body table-responsive">
+<table id="shop-list-table" class="table table-bordered table-striped">
+<thead>
+<tr>
+    <th>매장명</th>
+    <th>상태</th>
+    <th ng-show="isAdmin">관리자</th>
+    <th>매장주소</th>
+    <th>상품</th>
+    <th>상품 유효기간</th>
+    <th>매장관리</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="shop in shopList">
+    <td>{{shop.name_main}}</td>
+    <td>{{showStatus(shop.grade)}}</td>
+    <td ng-show="isAdmin">{{shop.owner}}</td>
+    <td>{{shop.address}}</td>
+    <td>{{shop.grade}}</td>
+    <td>{{shop.grade_expire}}</td>
+    <td>
+        <button class="btn btn-default" ui-sref="admin.shop-status({ownerId: shop.owner_id, shopId: shop.shop_id})" ng-click="clickShop(shop)" ng-show="isAdmin">상품관리</button>
+        <button class="btn btn-default" ui-sref="admin.shop-admin({ownerId: shop.owner_id, shopId: shop.shop_id})" ng-click="clickShop(shop)" ng-show="isAdmin">관리자변경</button>
+        <button class="btn btn-default" ui-sref="user.shop-info({ownerId: shop.owner_id, shopId: shop.shop_id})" ng-click="clickShop(shop)">매장기본정보</button>
+        <button class="btn" ng-class="getButtonClassName(shop)" ui-sref="user.shop-stylecut({ownerId: shop.owner_id, shopId: shop.shop_id})" ng-click="clickShop(shop)">스타일컷관리</button>
+    	<button class="btn btn-default" ui-sref="user.shop-viewimage({ownerId: shop.owner_id, shopId: shop.shop_id})" ng-click="clickShop(shop)">매장이미지관리</button>
+        <button class="btn btn-default" ui-sref="user.stats">매장통계</button>
+    </td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section><!-- /.content -->

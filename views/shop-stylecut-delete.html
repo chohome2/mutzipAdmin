@@ -1,0 +1,56 @@
+<section class="content-header">
+    <h1>
+        매장스타일컷 삭제
+	<small>{{shopInfo.name_main}}</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<style>
+.not-sortable.grid {
+overflow: hidden;
+}
+.not-sortable li {
+list-style: none;
+margin: 5px;
+text-align:center;
+}
+.not-sortable.grid li {
+float: left;
+width: 200px;
+height: 330px;
+padding:5px;
+border:1px solid #bbb;
+}
+.not-sortable.grid .mainable {
+background:#fffaf0;
+}
+.not-sortable.grid li .noimage {
+height:298px;
+color:#bbb;
+}
+</style>
+<section class="content">
+<div style="margin:0 5px 15px 0;">
+<button class="btn btn-primary pull-right" ui-sref="user.shop-stylecut-edit({shopId:shopId})">이미지 순서변경</button>
+<button class="btn btn-warning pull-right" ui-sref="user.shop-stylecut-create({shopId:shopId})" style="margin:0 3px 0 3px;">이미지 등록</button>
+<button class="btn btn-default pull-right" ui-sref="user.shop-stylecut({shopId:shopId})">매장 스타일컷</button>
+<div class="clearfix"></div>
+</div>
+<div class="callout callout-info">
+<h4><i class="fa fa-fw fa-bullhorn"></i> 연노랑 배경색은 메인화면에 노출되는 이미지입니다.</h4>
+</div>
+<ul class="not-sortable grid">
+<li ng-repeat="image in imageList"  ng-class="{'mainable': $index < refer.grade.dp_main}">
+	<div ng-hide="image.image_id == ''" ng-class="{'confirm': $index < refer.grade.dp_main}">
+		<img ng-src="{{image.image_url}}" class="img-responsive" width="200" height="300">
+	</div>
+	<div ng-show="image.image_id == ''" ng-class="{'confirm': $index < refer.grade.dp_main}" class="noimage">
+		<h1>{{$index + 1}}</h1>
+	</div>
+	<p ng-hide="image.image_id == ''" style="margin-top:2px;"><button type="button" class="btn btn-danger btn-sm" ng-click="deleteFile(image.image_id)">삭제</button></p>
+</li>
+</ul>
+</div>
+
+</section><!-- /.content -->

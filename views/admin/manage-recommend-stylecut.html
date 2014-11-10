@@ -1,0 +1,35 @@
+<section class="content-header">
+    <h1>
+        추천이미지 확인
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="form-group">
+    <label>매장선택</label>
+	<select class="form-control" ng-model="selectedShop" ng-options="shop.name_main for shop in shopList" ng-change="selectShop()">
+		<option value="">--매장을 선택하세요--</option>
+	</select>
+</div>
+
+<div class="row" ng-show="shopData">
+<div class="col-xs-4">
+<div style="border:3px solid #888">
+<ul rn-carousel rn-carousel-indicator rn-carousel-control rn-carousel-index="carouselIndex">
+  <li ng-repeat="imageData in shopData.image_list">
+  	<img ng-src="{{imageData.image_url}}" class="img-responsive">
+	<div class="layer" style="font-size:20px; text-align:center;">{{ groupText(imageData) }}</div>
+  </li>
+</ul>
+</div>
+</div>
+<div class="col-xs-8">
+	<div class="row">
+		<div class="col-xs-3" style="padding-bottom:15px;" ng-repeat="recommend in recommendData">
+			<img ng-src="{{recommend.image_url}}" class="img-responsive" style="border:3px solid #888">
+		</div>
+	</div>
+</div>
+</div>
+</section><!-- /.content -->

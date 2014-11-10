@@ -1,0 +1,41 @@
+<section class="content-header">
+    <h1>
+        공지사항
+        <small>수정</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+    <div class="box box-primary">
+        <!-- form start -->
+        <form role="form" ng-submit="modify()">
+            <div class="box-body">
+				<div class="form-group">
+                    <label for="inputEmail">분류</label>
+					<select class="form-control" ng-model="modifyNotice.type">
+						<option value="NOTICE">공지사항</option>
+						<option value="EVENT">이벤트</option>
+					</select>
+                </div>
+				<div class="form-group">
+                    <label for="inputEmail">제목</label>
+                    <input type="text" class="form-control" placeholder="제목을 입력하세요." ng-model="modifyNotice.title">
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">본문</label>
+                        <textarea id="createContent" class="textarea" placeholder="본문 내용을 입력하세요." style="width: 100%; height: 300px; font-size: 12px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>                      
+				</div>
+            </div><!-- /.box-body -->
+
+            <div class="box-footer">
+                <button ui-sref="user.notice-list" class="btn btn-warning">취소</button>
+                <button type="submit" class="btn btn-primary">수정</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</section><!-- /.content -->

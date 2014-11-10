@@ -1,0 +1,122 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+      <meta charset="UTF-8">
+      <title>:::MUTZIP ADMIN:::</title>
+      <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+      <link href="styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+      <link href="styles/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	  <link href="styles/ionicons.min.css" rel="stylesheet" type="text/css" />
+      <link href="styles/morris/morris.css" rel="stylesheet" type="text/css" />
+      <link href="styles/AdminLTE.css" rel="stylesheet" type="text/css" />
+	  <link href="styles/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+  	  <link href="styles/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+      <link href="styles/angular-carousel.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body ng-app="mutzipAdminApp" class="skin-blue">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <header class="header" ng-include="' /views/header.html '"></header>
+
+
+    <div class="wrapper row-offcanvas row-offcanvas-left" ui-view>
+        <aside class="left-side sidebar-offcanvas" ng-include="' /views/sidebar.html '"></aside>
+        <aside class="right-side" ui-view></aside>
+    </div>
+
+    <div id="alertBox" data-ng-show="error" class="alert alert-danger ng-hide">
+        <button type="button" data-ng-click="error = null;" class="close">×</button>
+        <strong></strong>
+        <span data-ng-bind="error" class="ng-binding"></span>
+    </div>
+
+<div class="modal fade" id="spinnerModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+    	<h2 class="text-light-blue"><img src="img/ajax-loader.gif">	
+	  &nbsp;&nbsp;잠시만 기다려 주세요... </h2>	  
+	  </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDQLvQlyj9hG7bAFDCo4JStj4c_2kYbP0U&sensor=FALSE"></script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script src="scripts/routingConfig.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/services/owner.js"></script>
+        <script src="scripts/services/area.js"></script>
+        <script src="scripts/services/shop.js"></script>
+        <script src="scripts/services/notice.js"></script>
+        <script src="scripts/services/grade.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/directives/access.js"></script>
+        <script src="scripts/controllers/sidebar.js"></script>
+        <script src="scripts/controllers/shoplist.js"></script>
+        <script src="scripts/controllers/shopinfo.js"></script>
+        <script src="scripts/controllers/shopstylecut.js"></script>
+        <script src="scripts/controllers/adminmanageuser.js"></script>
+        <script src="scripts/controllers/adminmanagearea.js"></script>
+        <script src="scripts/controllers/adminmanageproduct.js"></script>
+        <script src="scripts/controllers/adminrecommend.js"></script>
+        <script src="scripts/controllers/adminshop.js"></script>
+        <script src="scripts/controllers/notice.js"></script>
+        <script src="scripts/controllers/noticemodify.js"></script>
+        <script src="scripts/controllers/stats.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <!-- endbuild -->
+
+    <!-- AdminLTE App -->
+
+    <script src="js/AdminLTE/app.js" type="text/javascript"></script>
+    <script src="js/jquery.sortable.min.js" type="text/javascript"></script>
+    <script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+  	<script src="js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="js/plugins/morris/morris.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-touch.min.js"></script>
+	<script src="js/angular-carousel.min.js" type="text/javascript"></script>
+	<script>
+		window.onload=function(){initLTE();};
+	</script>
+	</body>
+</html>

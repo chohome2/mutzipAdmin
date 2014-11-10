@@ -1,0 +1,137 @@
+<section class="content-header">
+    <h1>
+        매장통계
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="form-group">
+    <label>매장선택</label>
+    <select class="form-control" ng-model="selectedShop" ng-options="shop.name_main for shop in shopList" ng-change="selectShop()">
+        <option value="">--매장을 선택하세요--</option>
+    </select>
+</div>
+<div class="row">
+	<div class="col-lg-2 col-xs-3">
+    	<div class="small-box bg-aqua">
+        	<div class="inner">
+                <h3>150</h3>
+            	<p>관심매장 누적등록수</p>
+        	</div>
+        </div>
+	</div><!-- ./col -->
+	<div class="col-lg-2 col-xs-3">
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3>2,987</h3>
+                <p>전일 상세페이지 조회수</p>
+            </div> 
+        </div>
+    </div><!-- ./col -->
+	<div class="col-lg-2 col-xs-3">
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>1,492</h3>
+                <p>전일 상세페이지 방문자수</p>
+            </div> 
+        </div>
+    </div><!-- ./col -->
+	<div class="col-lg-2 col-xs-3">
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>8,258</h3>
+                <p>최근 1주 상세페이지 조회수</p>
+            </div> 
+        </div>
+    </div><!-- ./col -->
+	<div class="col-lg-2 col-xs-3">
+        <div class="small-box bg-blue">
+            <div class="inner">
+                <h3>3,150</h3>
+                <p>최근 1주 상세페이지 방문자수</p>
+            </div> 
+        </div>
+    </div><!-- ./col -->
+</div>
+
+<div class="box box-info">
+	<div class="box-header">
+        <h3 class="box-title">Daily PV & UV Chart</h3>
+    </div>
+    <div class="box-body chart-responsive">
+    	<div class="chart" id="line-chart" style="height: 300px;"></div>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
+<div>
+
+<div class="row">
+ 	<div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Daily PV & UV Table</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th>DATE</th>
+                        <th>방문자수</th>
+                        <th>조회수</th>
+                    </tr>
+                    <tr>
+                        <td>2014-09-01</td>
+                        <td>1,432</td>
+                        <td>2,666</td>
+                    </tr>
+                    <tr>
+                        <td>2014-09-02</td>
+                        <td>1,012</td>
+                        <td>2,778</td>
+                    </tr>
+                    <tr>
+                        <td>2014-09-03</td>
+                        <td>3,452</td>
+                        <td>4,912</td>
+                    </tr>
+                    <tr>
+                        <td>2014-09-04</td>
+                        <td>1,132</td>
+                        <td>3,767</td>
+                    </tr>
+                    <tr>
+                        <td>2014-09-05</td>
+                        <td>4,412</td>
+                        <td>6,810</td>
+                    </tr>
+                    <tr>
+                        <td>2014-09-06</td>
+                        <td>2,492</td>
+                        <td>5,670</td>
+                    </tr>
+                    <tr>
+                        <td>2014-09-07</td>
+                        <td>1,839</td>
+                        <td>4,820</td>
+                    </tr>
+                    <tr>
+                        <td>2014-09-08</td>
+                        <td>7,392</td>
+                        <td>15,073</td>
+                    </tr>
+                    <tr>
+                        <td>2014-09-09</td>
+                        <td>3,492</td>
+                        <td>10,687</td>
+                    </tr>			
+                    <tr>
+                        <td>2014-09-10</td>
+                        <td>3,230</td>
+                        <td>8,432</td>
+                    </tr>		
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+</div>
+</div>
+</section><!-- /.content -->

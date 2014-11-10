@@ -1,0 +1,43 @@
+        <section class="sidebar" ng-controller="SidebarCtrl">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+            </div>
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li data-access-level='accessLevels.admin' >
+                    <a ui-sref="admin.dashboard">
+                        <i class="fa fa-dashboard"></i> <span>대시보드</span>
+                    </a>
+                </li>
+                <li data-access-level='accessLevels.user'>
+                    <a ui-sref="user.shop-list">
+                        <i class="fa fa-list"></i> <span>매장리스트</span>
+                    </a>
+                </li>
+                <li data-access-level='accessLevels.user'>
+                    <a ui-sref="user.stats">
+                        <i class="fa fa-bar-chart-o"></i> <span>통계</span>
+                    </a>
+                </li>
+                <li class="treeview" data-access-level='accessLevels.admin'>
+                    <a href="#">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span>관리</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a ui-sref="admin.manage-user"><i class="fa fa-angle-double-right"></i>회원관리</a></li>
+                        <li><a ui-sref="admin.manage-area"><i class="fa fa-angle-double-right"></i>지역구분관리</a></li>
+                        <li><a ui-sref="admin.manage-product"><i class="fa fa-angle-double-right"></i>상품관리</a></li>
+                        <li><a ui-sref="admin.manage-recommend-stylecut"><i class="fa fa-angle-double-right"></i>추천이미지 확인</a></li>
+                    </ul>
+                </li>
+                <li data-access-level='accessLevels.user'>
+                    <a ui-sref="user.notice-list">
+                        <i class="fa fa-file-text-o"></i> <span>공지사항</span>
+                    </a>
+                </li>
+
+            </ul>
+        </section>

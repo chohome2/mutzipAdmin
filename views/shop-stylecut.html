@@ -1,0 +1,130 @@
+<section class="content-header">
+    <h1>
+        매장스타일컷
+        <small>{{shopInfo.name_main}}</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<style>
+.notsortable.grid {
+overflow: hidden;
+}
+.notsortable li {
+list-style: none;
+margin: 5px;
+text-align:center;
+}
+.notsortable.grid li {
+float: left;
+width: 200px;
+height: 390px;
+padding:5px;
+border:1px solid #bbb;
+}
+.notsortable.grid .mainable {
+background:#fffaf0;
+}
+.notsortable.grid li .confirm {
+border:6px solid #46e;
+}
+.notsortable.grid li .expire {
+border:6px dashed #a45;
+color:#a45;
+}
+.notsortable.grid li .wait {
+border:6px solid #f80;
+color:#f80;
+}
+.notsortable.grid li .reject {
+border:6px dashed #f24;
+color:#f24;
+}
+.notsortable.grid li .noimage {
+height:300px;
+color:#bbb;
+}
+.notsortable.grid li p.narrow {
+	margin-top:1px;
+	margin-bottom:1px;
+}
+</style>
+<section class="content">
+<div style="margin:0 5px 15px 0;">
+<button class="btn btn-primary pull-right" ui-sref="user.shop-stylecut-edit({shopId:shopId})">이미지 순서변경</button>
+<button class="btn btn-danger pull-right" ui-sref="user.shop-stylecut-delete({shopId:shopId})" style="margin:0 3px 0 3px;">이미지 삭제</button>
+<button class="btn btn-warning pull-right" ui-sref="user.shop-stylecut-create({shopId:shopId})">이미지 등록</button>
+<div class="clearfix"></div>
+</div>
+<div class="callout callout-info">
+<h4><i class="fa fa-fw fa-bullhorn"></i> 연노랑 배경색은 메인화면에 노출되는 이미지입니다.</h4>
+<h4><i class="fa fa-fw fa-bullhorn"></i> 모든 이미지는 매장상세화면에 노출됩니다.</h4>
+</div>
+<ul class="notsortable grid">
+<li ng-repeat="image in imageList" ng-class="{'mainable': $index < refer.grade.dp_main}">
+	<div class="{{image.status | lowercase}}" ng-hide="image.image_id == ''">
+		<img ng-src="{{image.image_url}}" class="img-responsive" width="200" height="300">
+	</div>
+	<div ng-show="image.image_id == ''" class="noimage">
+		<h1>{{$index + 1}}</h1>
+	</div>
+	<div ng-hide="image.image_id == ''">
+	<p ng-class="{'narrow': isAdmin}" ng-hide="image.style == ''">{{groupText(image)}} <button type="button" class="btn btn-primary" ng-click="openStyleEditor(image)">수정</button></p>
+	<p ng-class="{'narrow': isAdmin}" ng-show="image.style == ''"><button type="button" class="btn btn-primary" ng-click="openStyleEditor(image)">스타일분류</button></p>
+	<p ng-class="{'narrow': isAdmin}">{{image.likes}}회</p>
+	<p ng-class="{'narrow': isAdmin}" ng-hide="image.status == 'CONFIRM'">
+		<a href="" class="alerts {{image.status | lowercase}}" style="border-width:0px;" data-toggle="popover" data-placement="top" data-trigger="hover" data-title="{{getPopoverTitle(image.status)}}" data-content="{{getPopoverContent(image.status)}}" >
+		<i class="fa fa-fw fa-exclamation-circle"></i>{{image.created_at | date:'yyyy-MM-dd'}}
+		</a>
+	</p>
+	<p ng-class="{'narrow': isAdmin}" ng-show="image.status == 'CONFIRM'">
+		{{image.created_at | date:'yyyy-MM-dd'}}
+	</p>
+	<p class="narrow" ng-show="image.status == 'WAIT' && isAdmin">
+		<button type="button" class="btn btn-primary btn-xs" ng-click="updateImageStatus(image.image_id,'CONFIRM')">CONFIRM</button>
+		<button type="button" class="btn btn-danger btn-xs" ng-click="updateImageStatus(image.image_id,'REJECT')">REJECT</button>
+	</p>
+	<p class="narrow" ng-show="image.status == 'REJECT' && isAdmin">
+		<button type="button" class="btn btn-primary btn-xs" ng-click="updateImageStatus(image.image_id,'CONFIRM')">CONFIRM</button>
+	</p>
+	<p class="narrow" ng-show="image.status == 'CONFIRM' && isAdmin">
+		<button type="button" class="btn btn-danger btn-xs" ng-click="updateImageStatus(image.image_id,'REJECT')">REJECT</button>
+	</p>
+	</div>
+</li>
+</ul>
+
+<div class="modal fade" id="styleQuestionModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">스타일분류</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+			<img ng-src="{{selectedImage.image_url}}" class="img-responsive">
+		</div>
+		
+		<div ng-repeat="counter in styleDataCounter">
+			<h3>Question {{counter + 1}}</h3>
+			<div ng-show="styleData[counter]">
+			<h4>{{styleData[counter].q}}</h4>
+			<label class="radio-inline">
+  				<input type="radio" name="question{{counter}}" value="0" ng-model="styleData[counter].a" ng-change="changeStyle(counter)"> YES
+			</label>
+			<label class="radio-inline">
+  				<input type="radio" name="question{{counter}}" value="1" ng-model="styleData[counter].a" ng-change="changeStyle(counter)"> NO
+			</label>
+			</div>
+			<div ng-show="!styleData[counter]">앞 질문에 대한 답을 먼저 하세요.</div>
+		</div>
+	  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary" ng-click="saveStyle()">적용</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</section><!-- /.content -->

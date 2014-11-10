@@ -1,0 +1,57 @@
+<section class="content-header">
+    <h1>
+        admin 매장리스트
+        <small>전체</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+<div class="box-body table-responsive">
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+    <th>매장명</th>
+    <th>상태</th>
+    <th>매장주소</th>
+    <th>상품</th>
+    <th>상품 유효기간</th>
+    <th>매장관리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>유니클로</td>
+    <td>유료노출</td>
+    <td>서울시 강남구 도곡동</td>
+    <td>-</td>
+    <td>-</td>
+    <td>
+        <button class="btn btn-default">매장기본정보</button>
+        <button class="btn btn-default">스타일컷관리</button>
+        <button class="btn btn-default">매장전경관리</button>
+        <button class="btn btn-default">매장통계</button>
+    </td>
+</tr>
+<tr>
+    <td>유니클로</td>
+    <td>유료노출</td>
+    <td>서울시 강남구 도곡동</td>
+    <td>-</td>
+    <td>-</td>
+    <td>
+        <a ui-sref="user.shop-info({shopId: '123'})"><button class="btn btn-default">매장기본정보</button></a>
+        <a href="#"><button class="btn btn-danger">스타일컷관리</button></a>
+        <a href="#"><button class="btn btn-default">매장전경관리</button></a>
+        <a href="#"><button class="btn btn-default">매장통계</button></a>
+    </td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section><!-- /.content -->

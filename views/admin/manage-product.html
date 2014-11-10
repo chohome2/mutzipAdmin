@@ -1,0 +1,88 @@
+<section class="content-header">
+    <h1>
+        상품관리
+        <small>전체</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+<div class="col-xs-12">
+
+<div class="box-body table-responsive">
+<table class="table table-bordered">
+<thead>
+<tr>
+    <th></th>
+    <th>WAIT</th>
+    <th>FREE</th>
+    <th>BASIC</th>
+    <th>PREMIUM</th>
+    <th>VIP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>A.메인페이지 노출갯수</td>
+    <td>{{grade.wait.dp_main}}ea</td>
+    <td>{{grade.free.dp_main}}ea</td>
+    <td>{{grade.basic.dp_main}}ea</td>
+    <td>{{grade.premium.dp_main}}ea</td>
+    <td>{{grade.vip.dp_main}}ea</td>
+</tr>
+<tr>
+    <td>B.상세페이지 노출갯수</td>
+    <td>{{grade.wait.dp_desc}}ea</td>
+    <td>{{grade.free.dp_desc}}ea</td>
+    <td>{{grade.basic.dp_desc}}ea</td>
+    <td>{{grade.premium.dp_desc}}ea</td>
+    <td>{{grade.vip.dp_desc}}ea</td>
+</tr>
+<tr>
+    <td>C.가격</td>
+    <td>{{grade.wait.price | number:0}}원</td>
+    <td>{{grade.free.price | number:0}}원</td>
+    <td>{{grade.basic.price | number:0}}원</td>
+    <td>{{grade.premium.price | number:0}}원</td>
+    <td>{{grade.vip.price | number:0}}원</td>
+</tr>
+</tbody>
+    <tfoot>
+    <tr>
+        <td></td>
+        <td><button class="btn btn-warning" ng-click="changeValue('wait')">수정</button></td>
+        <td><button class="btn btn-warning" ng-click="changeValue('free')">수정</button></td>
+        <td><button class="btn btn-warning" ng-click="changeValue('basic')">수정</button></td>
+        <td><button class="btn btn-warning" ng-click="changeValue('premium')">수정</button></td>
+        <td><button class="btn btn-warning" ng-click="changeValue('vip')">수정</button></td>
+    </tr>
+    </tfoot>
+</table>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="gradeModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">{{changeGrade.name}} 상품 변경</h4>
+      </div>
+      <div class="modal-body">
+		<h5>메인페이지 노출갯수</h5>
+        <input type="text" class="form-control" ng-model="changeGrade.dp_main">
+		<h5>상세페이지 노출갯수</h5>
+        <input type="text" class="form-control" ng-model="changeGrade.dp_desc">
+		<h5>가격</h5>
+        <input type="text" class="form-control" ng-model="changeGrade.price">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-danger" ng-click="change()">변경</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</section><!-- /.content -->
