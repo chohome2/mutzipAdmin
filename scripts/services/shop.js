@@ -1,5 +1,6 @@
 'use strict';
 
+
 angular.module('mutzipAdminApp')
     .factory('Shop', function($http){
         $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -32,6 +33,7 @@ angular.module('mutzipAdminApp')
 				fd.append('likes', 0);
 				fd.append('style', '');
 				fd.append('status', 'WAIT');
+				console.log(fd);
 				return $http.post('/admin/shop/' + shopId + '/image/?action=create', fd, {
 					transformRequest: angular.identity,
 					headers: {'Content-Type': undefined}

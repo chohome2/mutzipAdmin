@@ -30,10 +30,10 @@
         <aside class="right-side" ui-view></aside>
     </div>
 
-    <div id="alertBox" data-ng-show="error" class="alert alert-danger ng-hide">
+    <div id="alertBox" data-ng-show="error" class="alert alert-danger ng-hide" style="font-size:20px;">
         <button type="button" data-ng-click="error = null;" class="close">×</button>
         <strong></strong>
-        <span data-ng-bind="error" class="ng-binding"></span>
+        <span data-ng-bind-html="error" class="ng-binding">{{error}}</span>
     </div>
 
 <div class="modal fade" id="spinnerModal">

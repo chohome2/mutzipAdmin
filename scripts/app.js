@@ -55,17 +55,17 @@ angular
                 controller:'ShopstylecutCtrl'
             })
 			.state('user.shop-stylecut-create', {
-                url: '/shop-stylecut-create/:shopId',
+                url: '/shop-stylecut-create/:ownerId/:shopId',
                 templateUrl: 'views/shop-stylecut-create.html',
                 controller:'ShopstylecutCtrl'
             })
 			.state('user.shop-stylecut-delete', {
-                url: '/shop-stylecut-delete/:shopId',
+                url: '/shop-stylecut-delete/:ownerId/:shopId',
                 templateUrl: 'views/shop-stylecut-delete.html',
                 controller:'ShopstylecutCtrl'
             })
 			.state('user.shop-stylecut-edit', {
-                url: '/shop-stylecut-edit/:shopId',
+                url: '/shop-stylecut-edit/:ownerId/:shopId',
                 templateUrl: 'views/shop-stylecut-edit.html',
                 controller:'ShopstylecutCtrl'
             })

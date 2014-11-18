@@ -149,15 +149,18 @@ angular.module('mutzipAdminApp')
                 return;
             }
             console.log($scope.images[type]);
-            Shop.updateShopImage($scope.images[type], $stateParams.ownerId, $stateParams.shopId, type).success(function(ret) {
+            Shop.updateShopImage($scope.images[type][0], $stateParams.ownerId, $stateParams.shopId, type).success(function(ret) {
                 console.log(ret);
                 if(ret.status == 'success') {
                     alert('이미지가 성공적으로 등록되었습니다.');
                     window.location.reload();
                 }
-                else {
-                    alert('변경 실패');
+                else if(ret.data.code == '160') {
+                    alert('잘못된 해상도의 이미지입니다. 올바른 해상도의 이미지를 선택해 주세요.');
                 }
+				else {
+					alert('이미지 등록이 실패하였습니다. 올바른 파일을 선택해 주세요');
+				}
             });
         };
     });

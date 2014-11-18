@@ -6,8 +6,11 @@ angular.module('mutzipAdminApp')
 		
 		$scope.isAdmin = Auth.isAdmin();
 		$scope.shopId = $stateParams.shopId;
+		$scope.ownerId = $stateParams.ownerId;
 		$scope.imageList = [];
 		$scope.uploadFile = function(){
+			$scope.createResult = " ";
+			$("#stylecutCreateModal").modal({'backdrop':'static','keyboard':false});
         	var file = $scope.myFile;
         	console.log('file is ' + JSON.stringify(file));
 			if(file == undefined) {
@@ -36,7 +39,7 @@ angular.module('mutzipAdminApp')
 				for(var i = 0; i < size; i++) {
 					if($scope.imageList[i].image_id == "") {
 						minIndex = i + 1;
-						$scope.imageList[i].image_id = "ok";
+						//$scope.imageList[i].image_id = "ok";
 						break;
 					}
 				}
@@ -46,20 +49,66 @@ angular.module('mutzipAdminApp')
 					return;
 				}*/
 				
+				
+				console.log(file[idx]);
+				
+				var ext = file[idx]['name'].substr(file[idx]['name'].length-3,3);
+
+				var allow_ext = ['png','PNG','jpg','JPG'];
+				var allow_type = ['image/png','image/jpeg'];
+				if($.inArray(ext, allow_ext) == -1) {
+					$scope.createResult += "<h3 class=\"text-red\">* '" + file[idx]['name'] + "' 파일 등록 실패 (허용되지 않는 확장자입니다. 'jpg', 'png' 확장자만 등록 가능합니다.)</h3>";
+					continue;
+				}
+				if($.inArray(file[idx]['type'], allow_type) == -1) {
+				    $scope.createResult += "<h3 class=\"text-red\">* '" + file[idx]['name'] + "' 파일 등록 실패 (허용되지 않는 파일타입입니다. 'jpg', 'png' 파일타입만 등록 가능합니다.)</h3>";
+		        	continue;
+				}
+
+				var fd = new FormData();
+                fd.append('image_url', file[idx]);
+                fd.append('order', minIndex);
+                fd.append('likes', 0);
+                fd.append('style', '');
+                fd.append('status', 'WAIT');
+				
+
+				$.ajax({
+					url: '/admin/shop/' + $scope.shopId + '/image/?action=create', 
+					async:false,
+					data:fd, 
+					type:"POST", 
+					processData:false, 
+					contentType:false, 
+					success:function(data){
+						console.log(data);
+						console.log(file[idx]['name']);
+						if(data.status == 'success') {
+							$scope.imageList[minIndex-1].image_id = "ok";
+							$scope.createResult += "<h3 class=\"text-green\">* '" + file[idx]['name'] + "' 파일 등록 성공 (" + minIndex+ "번 슬롯에 등록되었습니다.)</h3>";
+						}
+						else {
+							$scope.createResult += "<h3 class=\"text-red\">* '" + file[idx]['name'] + "' 파일 등록 실패 (허용되지 않는 이미지 해상도입니다. 600px * 800px 이미지만 등록 가능합니다.)</h3>";
+						}
+					}
+				});
+				/*	
         		Shop.uploadImage(file[idx], $scope.shopId, minIndex).success(function(ret){
 					console.log(ret);
 					if(ret.status == 'success') {
 						console.log(++totalCount + "th image upload finished!!");
 						if(totalCount == validCount) {
 							alert('이미지 등록이 완료되었습니다.');
-							$state.go('user.shop-stylecut',{'shopId':$scope.shopId});
+							$state.go('user.shop-stylecut',{'shopId':$scope.shopId, 'ownerId':$scope.ownerId});
 						}
 					}
 					else {
 						alert('이미지 등록에 실패했습니다.');
 					}
 				});
+				*/
 			}
+			$("#stylecutCreateModal").modal('hide');
     	};
 
 		$scope.deleteFile = function(id) {
@@ -89,7 +138,7 @@ angular.module('mutzipAdminApp')
 			Shop.modifyOrder($scope.shopId, {"images":images}).success(function(ret) {
 				if(ret.status == 'success') {
 					alert('순서 변경이 완료되었습니다.');
-					$state.go('user.shop-stylecut',{'shopId':$scope.shopId});
+					$state.go('user.shop-stylecut',{'shopId':$scope.shopId, 'ownerId':$scope.ownerId});
 				}
 				else {
 					alert('순서 변경 중 에러가 발생하였습니다. 다시 시도해 주세요.');
