@@ -53,7 +53,6 @@ angular.module('mutzipAdminApp')
 				console.log(file[idx]);
 				
 				var ext = file[idx]['name'].substr(file[idx]['name'].length-3,3);
-
 				var allow_ext = ['png','PNG','jpg','JPG'];
 				var allow_type = ['image/png','image/jpeg'];
 				if($.inArray(ext, allow_ext) == -1) {
@@ -87,8 +86,17 @@ angular.module('mutzipAdminApp')
 							$scope.imageList[minIndex-1].image_id = "ok";
 							$scope.createResult += "<h3 class=\"text-green\">* '" + file[idx]['name'] + "' 파일 등록 성공 (" + minIndex+ "번 슬롯에 등록되었습니다.)</h3>";
 						}
-						else {
+						else if(data.data.code == '160'){
 							$scope.createResult += "<h3 class=\"text-red\">* '" + file[idx]['name'] + "' 파일 등록 실패 (허용되지 않는 이미지 해상도입니다. 600px * 800px 이미지만 등록 가능합니다.)</h3>";
+						}
+						else if(data.data.code == '162'){
+							$scope.createResult += "<h3 class=\"text-red\">* '" + file[idx]['name'] + "' 파일 등록 실패 (허용되지 않는 확장자입니다. 'jpg', 'png' 확장자만 등록 가능합니다.)</h3>";
+						}
+						else if(data.data.code == '199'){
+							$scope.createResult += "<h3 class=\"text-red\">* '" + file[idx]['name'] + "' 파일 등록 실패 (이미지 파일이 아닙니다. 파일을 다시 확인해 주세요.)</h3>";
+						}
+						else {
+							$scope.createResult += "<h3 class=\"text-red\">* '" + file[idx]['name'] + "' 파일 등록 실패 (에러코드 : " + data.data.code + ")</h3>";
 						}
 					}
 				});
